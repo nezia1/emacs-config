@@ -270,6 +270,8 @@ The following section contains the configuration of [[https://github.com/emacs-l
 Install lsp-mode
 #+begin_src emacs-lisp
   (use-package lsp-mode
+    :custom
+    (lsp-keymap-prefix "C-c l")
     :ensure
     :commands lsp)
 #+end_src
