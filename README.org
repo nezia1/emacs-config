@@ -266,10 +266,7 @@ Install lsp-mode
 #+begin_src emacs-lisp
   (use-package lsp-mode
     :ensure
-    :commands lsp
-    :custom
-    ;; what to use when checking on-save. "check" is default, I prefer clippy
-  
+    :commands lsp)
 #+end_src
 Install [[https://github.com/emacs-lsp/lsp-ui][lsp-ui]], which provides UI additions to lsp-mode such as code lenses, flycheck diagnostics etc.
 #+begin_src emacs-lisp
