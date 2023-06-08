@@ -272,7 +272,8 @@ Install lsp-mode
   (use-package lsp-mode
     :custom
     (lsp-keymap-prefix "C-c l")
-    :ensure
+    :hook
+    (lsp-mode . electric-pair-local-mode) ; enable electric pair for lsp buffers (pairs brackets, quotes etc. automatically)
     :commands lsp)
 #+end_src
 Install [[https://github.com/emacs-lsp/lsp-ui][lsp-ui]], which provides UI additions to lsp-mode such as code lenses, flycheck diagnostics etc.
