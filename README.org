@@ -134,6 +134,11 @@ Enable syntax highlighting in org source blocks
 #+begin_src emacs-lisp
   (setq org-src-fontify-natively t)
 #+end_src
+
+Automatically load the right language based on the language header
+#+begin_src emacs-lisp
+  (add-to-list 'org-latex-packages-alist '("AUTO" "babel" t ("pdflatex")))
+#+end_src
 ** Publishing
 I use org's [[https://orgmode.org/manual/Publishing.html][publishing feature]] to export all of my notes at once. 
 #+begin_src emacs-lisp
