@@ -67,6 +67,10 @@ I use [[https://github.com/minad/vertico][vertico]] for my vertical/minibuffer c
   (vertico-mode))
 #+end_src
 
+Add flx to completion styles (fuzzy finding)
+#+begin_src emacs-lisp
+  (add-to-list 'completion-styles 'flex t)
+#+end_src
 ** which-key
 I use [[https://github.com/justbur/emacs-which-key][which-key]], a small package that shows a window that describes available keybindings that follow the prefix I just hit. I just can't live without it, it's mandatory for me since I often don't remember which exact keybind I need to press to do a certain thing.
 #+begin_src emacs-lisp
