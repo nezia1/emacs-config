@@ -1,4 +1,28 @@
 #+TITLE: My literate Emacs config
+* Table of contents                                                     :TOC:
+- [[#introduction][Introduction]]
+- [[#initialization][Initialization]]
+  - [[#general-settings][General settings]]
+  - [[#package-management][Package management]]
+  - [[#environment-variables][Environment variables]]
+  - [[#completion][Completion]]
+  - [[#which-key][which-key]]
+  - [[#expand-region][expand-region]]
+- [[#appearance][Appearance]]
+  - [[#theme][Theme]]
+  - [[#font][Font]]
+  - [[#mode-line][Mode-line]]
+  - [[#icons-for-dired][Icons for dired]]
+- [[#org-mode][Org mode]]
+  - [[#general-settings-1][General settings]]
+  - [[#publishing][Publishing]]
+  - [[#org-roam][org-roam]]
+  - [[#spellchecking][Spellchecking]]
+  - [[#pdf-tools][pdf-tools]]
+- [[#development][Development]]
+  - [[#git][git]]
+  - [[#lsp][LSP]]
+
 * Introduction
 This is my personal Emacs config, using org mode to make it easier to structure things and comment what section is used for exactly.
 
@@ -151,6 +175,16 @@ Automatically load the right language based on the language header
 #+begin_src emacs-lisp
   (add-to-list 'org-latex-packages-alist '("AUTO" "babel" t ("pdflatex")))
 #+end_src
+
+This allows to have a nicely formatted table of contents in org mode, like the one you're seeing in this config
+#+begin_src emacs-lisp
+  (use-package toc-org
+    :init (add-to-list 'org-tag-alist '("TOC" . ?T))
+    :hook ((org-mode markdown-mode) . toc-org-mode)
+    :bind ("C-c C-o" . toc-org-markdown-follow-point-at-thing))
+#+end_src
+
+This adds 
 ** Publishing
 I use org's [[https://orgmode.org/manual/Publishing.html][publishing feature]] to export all of my notes at once. 
 #+begin_src emacs-lisp
