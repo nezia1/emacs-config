@@ -120,6 +120,14 @@ doom-modeline requires nerd-icons to be able to display icons. Don't forget to r
 #+begin_src emacs-lisp
   (use-package nerd-icons)
 #+end_src
+
+** Icons for dired
+nerd-icons-dired allows to have nerd-icons directly in dired (the same as doom-modeline icons)
+#+begin_src emacs-lisp
+  (use-package nerd-icons-dired
+    :hook
+    (dired-mode . nerd-icons-dired-mode))
+#+end_src
 * Org mode
 This section contains all of my org mode configuration. Over the course of learning Emacs, I learned to appreciate org-mode more and more, and I use it for a lot of various tasks, from writing documents and exporting them to pdf, to writing this exact config, or just taking notes.
 ** General settings
