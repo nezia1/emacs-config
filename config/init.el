@@ -14,9 +14,6 @@
 (use-package which-key
   :hook (after-init . which-key-mode))
 
-(use-package icomplete
-  :hook (after-init . fido-vertical-mode))
-
 (let ((remaps '((c-mode . c-ts-mode)
                 (c++-mode . c++-ts-mode)
                 (c-or-c++-mode . c-or-c++-ts-mode)
@@ -146,7 +143,6 @@
 	("m" . 'minimize-window)
 	("M" . 'maximize-window))
   :custom
-  
   (tab-always-indent 'complete)
   (kill-buffer-delete-auto-save-files t)
 
@@ -154,13 +150,20 @@
   ;; Try `cape-dict' as an alternative.
   (text-mode-ispell-word-completion nil)
   
-  ;; Hide commands in M-x which do not apply to the current mode.  Corfu
-  ;; commands are hidden, since they are not used via M-x. This setting is
-  ;; useful beyond Corfu.
+  ;; Hide commands in M-x which do not apply to the current mode. 
   (read-extended-command-predicate #'command-completion-default-include-p)
+  ;; Enable context menu. `vertico-multiform-mode' adds a menu in the minibuffer
+  ;; to switch display modes.
+  (context-menu-mode t)
+  ;; Support opening new minibuffers from inside existing minibuffers.
+  (enable-recursive-minibuffers t)
+  ;; Do not allow the cursor in the minibuffer prompt
+  (minibuffer-prompt-properties
+   '(read-only t cursor-intangible t face minibuffer-prompt))
   :config
   (tool-bar-mode -1)
   (menu-bar-mode -1))
+
 
 
 (use-package faces
@@ -242,3 +245,29 @@
 
 (use-package marginalia
   :hook (after-init . marginalia-mode))
+
+;; Enable Vertico.
+(use-package vertico
+  ;; :custom
+  ;; (vertico-scroll-margin 0) ;; Different scroll margin
+  ;; (vertico-count 20) ;; Show more candidates
+  ;; (vertico-resize t) ;; Grow and shrink the Vertico minibuffer
+  ;; (vertico-cycle t) ;; Enable cycling for `vertico-next/previous'
+  :init
+  :hook
+  (after-init . vertico-mode))
+
+(use-package orderless
+  :custom
+  ;; Configure a custom style dispatcher (see the Consult wiki)
+  ;; (orderless-style-dispatchers '(+orderless-consult-dispatch orderless-affix-dispatch))
+  ;; (orderless-component-separator #'orderless-escapable-split-on-space)
+  (completion-styles '(orderless basic))
+  (completion-category-overrides '((file (styles partial-completion))))
+  (completion-category-defaults nil) ;; Disable defaults, use our settings
+  (completion-pcm-leading-wildcard t)) ;; Emacs 31: partial-completion behaves like substring
+
+;; Persist history over Emacs restarts. 
+(use-package savehist
+  :hook
+  (after-init . savehist-mode))

@@ -37,6 +37,8 @@
         cape
         eglot-booster
         marginalia
+        vertico
+        orderless
 
         # modes
         nix-ts-mode
