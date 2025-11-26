@@ -1,3 +1,9 @@
+;; Update user-emacs-directory to use a non store location, so that packages may write there
+;; thanks https://github.com/jordanisaacs/emacs-config/blob/3854525333a886c53a1dc966e0b4bb09a088e9fb/init.org?plain=1#L39-L48
+(setq user-emacs-directory (expand-file-name "emacs/" (getenv "XDG_STATE_HOME")))
+(setq custom-file (locate-user-emacs-file "custom.el"))
+
+
 (use-package use-package-core
   :custom
   (use-package-verbose t)

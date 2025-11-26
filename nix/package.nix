@@ -102,7 +102,8 @@
     postBuild = ''
       wrapProgram $out/bin/emacs \
         --prefix PATH : ${emacsDeps}/bin \
-        --prefix INFOPATH : $out/share/info
+        --prefix INFOPATH : $out/share/info \
+        --add-flags --init-directory="${../config}"
     '';
   };
 in
