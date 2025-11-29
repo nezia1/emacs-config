@@ -271,3 +271,12 @@
 (use-package savehist
   :hook
   (after-init . savehist-mode))
+
+(use-package em-term
+  :config
+  (dolist (el '("nix"
+		"nix-build"
+		"nixos-rebuild"
+		"rbld"
+		"deploy"))
+    (add-to-list 'eshell-visual-commands el)))
