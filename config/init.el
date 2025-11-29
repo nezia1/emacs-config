@@ -48,11 +48,11 @@
   (nix-ts-mode . eglot-ensure)
   (c-ts-mode . eglot-ensure)
   (yaml-ts-mode . eglot-ensure)
-  :config
-  (setq-default
-   eglot-workspace-configuration 
+  :custom
+  (eglot-workspace-configuration 
    '(:nixd ( :nixpkgs (:expr "import <nixpkgs> { }")
 	     :formatting (:command ["alejandra"]))))
+  (eglot-report-progress nil)
   (add-to-list 'eglot-server-programs
 	       '(c-ts-mode . ("clangd"
 			      "--all-scopes-completion"
