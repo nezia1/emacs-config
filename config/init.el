@@ -280,3 +280,12 @@
 		"rbld"
 		"deploy"))
     (add-to-list 'eshell-visual-commands el)))
+
+(use-package org-appear
+  :hook
+  (org-mode . org-appear-mode)
+  :custom
+  (org-appear-autoemphasis t)
+  (org-appear-autolinks t)
+  (org-appear-autosubmarkers t)
+  (org-appear-inside-latex t))
