@@ -52,10 +52,12 @@
   (c-ts-mode . eglot-ensure)
   (yaml-ts-mode . eglot-ensure)
   :custom
-  (eglot-workspace-configuration 
-   '(:nixd ( :nixpkgs (:expr "import <nixpkgs> { }")
-	     :formatting (:command ["alejandra"]))))
   (eglot-report-progress nil)
+  :config
+  ;; seems to not work in :custom for some reason
+  (setq-default eglot-workspace-configuration 
+		'(:nixd ( :nixpkgs (:expr "import <nixpkgs> { }")
+			  :formatting (:command ["alejandra"]))))
   (add-to-list 'eglot-server-programs
 	       '(c-ts-mode . ("clangd"
 			      "--all-scopes-completion"
@@ -73,8 +75,9 @@
   (add-to-list 'eglot-server-programs
 	       '((java-mode java-ts-mode) . ("jdtls")))
   (add-to-list 'eglot-server-programs
-	       '(yaml-ts-mode . ("yaml-language-server" "--stdio"))))
+	       '(yaml-ts-mode . ("yaml-language-server" "--stdio")))) 
 
+  
 (use-package eglot-booster
   :after eglot
   :hook (after-init . eglot-booster-mode))
