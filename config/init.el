@@ -33,6 +33,9 @@
   (prog-mode . (lambda ()
 		 (add-hook 'before-save-hook 'eglot-format nil t))))
 
+(use-package which-func
+  :hook (prog-mode . which-function-mode))
+
 (use-package eglot
   :bind 
   (:map eglot-mode-map
