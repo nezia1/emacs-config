@@ -39,6 +39,7 @@
         marginalia
         vertico
         orderless
+        eat
 
         # modes
         nix-ts-mode

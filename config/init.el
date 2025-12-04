@@ -295,3 +295,9 @@
   (org-appear-autolinks t)
   (org-appear-autosubmarkers t)
   (org-appear-inside-latex t))
+
+
+(use-package eat
+  :hook
+  (eshell-load . eat-eshell-mode)
+  (eshell-load . eat-eshell-visual-command-mode))
