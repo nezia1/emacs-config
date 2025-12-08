@@ -18,6 +18,7 @@
   zstd,
   p7zip,
   gnutar,
+  pandoc,
   _0xproto,
   nerd-fonts,
 }: let
@@ -31,7 +32,7 @@
         ultra-scroll
         org-appear
         org-modern
-        ox-gfm
+        ox-pandoc
         magit
         eldoc-box
         kind-icon
@@ -96,6 +97,7 @@
       gnutar
 
       tex
+      pandoc
     ];
   };
 

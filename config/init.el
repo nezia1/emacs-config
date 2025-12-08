@@ -187,6 +187,8 @@
   (org-mode . variable-pitch-mode)
   :custom
   (org-hide-emphasis-markers t)
+  :config
+  (add-to-list 'org-export-backends 'md)
   :custom-face
   (org-table ((t :inherit 'fixed-pitch)))
   (org-code ((t :inherit 'fixed-pitch)))
@@ -204,8 +206,10 @@
 (use-package org-modern
   :hook (org-mode . org-modern-mode))
 
-(use-package ox-gfm
-  :after ox)
+(use-package ox-pandoc
+  :after ox
+  :init
+  (add-to-list 'org-export-backends 'pandoc))
 
 (use-package magit)
 
