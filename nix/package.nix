@@ -31,6 +31,7 @@
         ultra-scroll
         org-appear
         org-modern
+        ox-gfm
         magit
         eldoc-box
         kind-icon

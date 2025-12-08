@@ -204,6 +204,9 @@
 (use-package org-modern
   :hook (org-mode . org-modern-mode))
 
+(use-package ox-gfm
+  :after ox)
+
 (use-package magit)
 
 (use-package dired
