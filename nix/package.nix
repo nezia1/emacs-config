@@ -65,12 +65,14 @@
         dejavu
         fontspec
         dvisvgm
-        dvipng # for preview and export as html
+        dvipng
         wrapfig
         amsmath
         ulem
         hyperref
         capt-of
+        listings
+        babel-french
       ]
   );
 
