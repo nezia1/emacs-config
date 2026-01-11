@@ -75,8 +75,12 @@
   (add-to-list 'eglot-server-programs
 	       '((java-mode java-ts-mode) . ("jdtls")))
   (add-to-list 'eglot-server-programs
-	       '(yaml-ts-mode . ("yaml-language-server" "--stdio")))) 
+	       '(yaml-ts-mode . ("yaml-language-server" "--stdio")))
+  (add-to-list 'eglot-server-programs '((php-mode) . ("intelephense" "--stdio"))))
 
+(use-package php-mode
+  :config
+  (php-mode-coding-style 'psr2))
   
 (use-package eglot-booster
   :after eglot
@@ -210,6 +214,11 @@
   :after ox
   :init
   (add-to-list 'org-export-backends 'pandoc))
+
+(use-package engrave-faces
+  :after ox-latex
+  :config
+  (setq org-latex-src-block-backend 'engraved))
 
 (use-package magit)
 

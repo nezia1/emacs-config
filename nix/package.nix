@@ -3,7 +3,7 @@
   emacsPackagesFor,
   symlinkJoin,
   makeWrapper,
-  texliveBasic,
+  texliveMedium,
   emacs-lsp-booster,
   alejandra,
   nixd,
@@ -42,6 +42,8 @@
         vertico
         orderless
         eat
+        engrave-faces
+        php-mode
 
         # modes
         nix-ts-mode
@@ -58,7 +60,7 @@
   );
 
   # https://wiki.nixos.org/wiki/TexLive#Combine_Sets
-  tex = texliveBasic.withPackages (
+  tex = texliveMedium.withPackages (
     ps:
       with ps; [
         xetex
@@ -71,8 +73,11 @@
         ulem
         hyperref
         capt-of
-        listings
+        tcolorbox
+        fvextra
         babel-french
+        upquote
+        pdfcol
       ]
   );
 
@@ -88,6 +93,7 @@
       clang-tools
       basedpyright
       jdt-language-server
+
       yaml-language-server
 
       unzip
