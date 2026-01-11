@@ -216,9 +216,10 @@
   (add-to-list 'org-export-backends 'pandoc))
 
 (use-package engrave-faces
+  :defer nil
   :after ox-latex
-  :config
-  (setq org-latex-src-block-backend 'engraved))
+  :custom
+  (org-latex-src-block-backend 'engraved))
 
 (use-package magit)
 
