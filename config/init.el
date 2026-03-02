@@ -37,6 +37,7 @@
   :hook (prog-mode . which-function-mode))
 
 (use-package eglot
+  :commands (eglot eglot-ensure)
   :bind 
   (:map eglot-mode-map
 	("C-c l a" . eglot-code-actions)
@@ -199,7 +200,16 @@
   (org-indent ((t (:inherit (org-hide fixed-pitch)))))
   (org-block ((t :inherit 'fixed-pitch)))
   (org-checkbox ((t :inherit 'fixed-pitch)))
-  (org-latex-and-related ((t (:inherit 'fixed-pitch)))))
+  (org-latex-and-related ((t (:inherit 'fixed-pitch))))
+  :config
+  (org-babel-do-load-languages
+   'org-babel-load-languages
+   '((emacs-lisp . t)
+     (python     . t)
+     (org        . t)
+     (shell      . t)
+     (C          . t))))
+
 
 (use-package kind-icon :after corfu
     :defines corfu-margin-formatters
