@@ -11,6 +11,8 @@
   basedpyright,
   jdt-language-server,
   yaml-language-server,
+  typescript-language-server,
+  biome,
   unzip,
   gzip,
   bzip2,
@@ -49,8 +51,10 @@
           engrave-faces
           php-mode
 
-            # modes
+          # modes
           nix-ts-mode
+          web-mode
+          json-mode
           (epkgs.treesit-grammars.with-grammars (grammars:
             with grammars; [
               tree-sitter-nix
@@ -59,6 +63,8 @@
               tree-sitter-python
               tree-sitter-java
               tree-sitter-yaml
+              tree-sitter-typescript
+              tree-sitter-tsx
             ]))
         ]
     );
@@ -111,6 +117,9 @@
       jdt-language-server
 
       yaml-language-server
+
+      typescript-language-server
+      biome
 
       unzip
       gzip

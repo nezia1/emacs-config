@@ -47,11 +47,15 @@
 	("C-c l F" . eglot-format-buffer)
 	("C-c l R" . eglot-reconnect))
   :hook
-  ((python-mode python-ts-mode) . eglot-ensure)
-  ((java-mode java-ts-mode) . eglot-ensure)
-  (nix-ts-mode . eglot-ensure)
-  (c-ts-mode . eglot-ensure)
-  (yaml-ts-mode . eglot-ensure)
+  ((python-mode
+    c-mode
+    java-mode
+    nix-ts-mode
+    yaml-ts-mode
+    typescript-ts-mode
+    web-mode
+    json-mode) . eglot-ensure)
+
   :custom
   (eglot-report-progress nil)
   :config
@@ -77,12 +81,19 @@
 	       '((java-mode java-ts-mode) . ("jdtls")))
   (add-to-list 'eglot-server-programs
 	       '(yaml-ts-mode . ("yaml-language-server" "--stdio")))
-  (add-to-list 'eglot-server-programs '((php-mode) . ("intelephense" "--stdio"))))
+  (add-to-list 'eglot-server-programs '((php-mode) . ("intelephense" "--stdio")))
+  (add-to-list 'eglot-server-programs
+               `((typescript-ts-mode :language-id "typescriptreact")
+                 . ("typescript-language-server" "--stdio")))
+  (add-to-list 'eglot-server-programs
+               `(web-mode . ("biome" "lsp-proxy")))
+  (add-to-list 'eglot-server-programs
+               '(json-mode . ("biome" "lsp-proxy"))))
 
 (use-package php-mode
   :config
   (php-mode-coding-style 'psr2))
-  
+
 (use-package eglot-booster
   :after eglot
   :hook (after-init . eglot-booster-mode))
