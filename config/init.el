@@ -64,7 +64,7 @@
 		'(:nixd ( :nixpkgs (:expr "import <nixpkgs> { }")
 			  :formatting (:command ["alejandra"]))))
   (add-to-list 'eglot-server-programs
-	       '(c-ts-mode . ("clangd"
+               '(c-ts-mode . ("clangd"
 			      "--all-scopes-completion"
                               "--background-index"
                               "--clang-tidy"
@@ -76,11 +76,11 @@
 			      :initializationOptions
 			      (:formatting (:command ["clang-format"])))))
   (add-to-list 'eglot-server-programs
-	       '((python-mode python-ts-mode) . ("basedpyright-langserver" "--stdio")))
+               '((python-mode python-ts-mode) . ("basedpyright-langserver" "--stdio")))
   (add-to-list 'eglot-server-programs
-	       '((java-mode java-ts-mode) . ("jdtls")))
+               '((java-mode java-ts-mode) . ("jdtls")))
   (add-to-list 'eglot-server-programs
-	       '(yaml-ts-mode . ("yaml-language-server" "--stdio")))
+               '(yaml-ts-mode . ("yaml-language-server" "--stdio")))
   (add-to-list 'eglot-server-programs '((php-mode) . ("intelephense" "--stdio")))
   (add-to-list 'eglot-server-programs
                `((typescript-ts-mode :language-id "typescriptreact")
@@ -128,7 +128,7 @@
   (after-init . global-corfu-mode)
   (after-init . corfu-history-mode)
   (after-init . corfu-popupinfo-mode))
-  
+
 (use-package completion-preview
   :bind (:map completion-preview-active-mode-map
               ("M-f" . #'completion-preview-insert))
@@ -224,10 +224,10 @@
 
 
 (use-package kind-icon :after corfu
-    :defines corfu-margin-formatters
-    :functions kind-icon-margin-formatter
-    :custom (kind-icon-default-face 'corfu-default)
-    :config (add-to-list 'corfu-margin-formatters #'kind-icon-margin-formatter))
+  :defines corfu-margin-formatters
+  :functions kind-icon-margin-formatter
+  :custom (kind-icon-default-face 'corfu-default)
+  :config (add-to-list 'corfu-margin-formatters #'kind-icon-margin-formatter))
 
 (use-package org-modern
   :hook (org-mode . org-modern-mode))
@@ -261,7 +261,8 @@
 
 (use-package ob-plantuml
   :after org
-  :custom (org-plantuml-exec-mode plantuml))
+  :custom (org-plantuml-exec-mode 'plantuml)) ;; Note the quote here!
+
 (use-package ox-latex
   :custom
   (org-latex-compiler "lualatex")
