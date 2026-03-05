@@ -219,7 +219,8 @@
      (python     . t)
      (org        . t)
      (shell      . t)
-     (C          . t))))
+     (C          . t)
+     (plantuml   . t))))
 
 
 (use-package kind-icon :after corfu
@@ -258,8 +259,9 @@
   :custom-face
   (eldoc-box-body ((t (:family "Sans Serif")))))
 
-
-
+(use-package ob-plantuml
+  :after org
+  :custom (org-plantuml-exec-mode plantuml))
 (use-package ox-latex
   :custom
   (org-latex-compiler "lualatex")

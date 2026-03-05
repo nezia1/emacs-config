@@ -21,6 +21,7 @@
   p7zip,
   gnutar,
   pandoc,
+  plantuml,
   _0xproto,
   nerd-fonts,
   glibcInfo,
@@ -128,6 +129,7 @@
       zstd
       p7zip
       gnutar
+      plantuml
 
       tex
       pandoc
