@@ -32,6 +32,7 @@
     (
       epkgs:
         with epkgs; [
+          diminish
           catppuccin-theme
           corfu
           envrc
@@ -50,12 +51,14 @@
           orderless
           eat
           engrave-faces
-          php-mode
+          gcmh
 
           # modes
+          php-mode
           nix-ts-mode
           web-mode
           json-mode
+          plantuml-mode
           (epkgs.treesit-grammars.with-grammars (grammars:
             with grammars; [
               tree-sitter-nix

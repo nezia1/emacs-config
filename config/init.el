@@ -1,4 +1,4 @@
-;; Update user-emacs-directory to use a non store location, so that packages may write there
+ ;; Update user-emacs-directory to use a non store location, so that packages may write there
 ;; thanks https://github.com/jordanisaacs/emacs-config/blob/3854525333a886c53a1dc966e0b4bb09a088e9fb/init.org?plain=1#L39-L48
 (setq user-emacs-directory (expand-file-name "emacs/" (getenv "XDG_STATE_HOME")))
 (setq custom-file (locate-user-emacs-file "custom.el"))
@@ -11,6 +11,8 @@
   (use-package-compute-statistics t)
   (use-package-always-defer t))
 
+(use-package diminish :ensure t)
+
 (use-package which-key
   :hook (after-init . which-key-mode))
 
@@ -22,6 +24,14 @@
   (dolist (remap remaps)
     (add-to-list 'major-mode-remap-alist remap)))
 
+(use-package gcmh
+  :diminish
+  :hook
+  (emacs-startup . gcmh-mode)
+  :custom
+  (gcmh-idle-delay 'auto)
+  (gcmh-auto-idle-delay-factor 10)
+  (gcmh-high-cons-threshold (* 100 1024 1024))) ;; 100MB during activity
 (use-package display-line-numbers
   :custom
   (display-line-numbers-width 3)
@@ -37,6 +47,7 @@
   :hook (prog-mode . which-function-mode))
 
 (use-package eglot
+  :ensure nil
   :commands (eglot eglot-ensure)
   :bind 
   (:map eglot-mode-map
@@ -47,14 +58,14 @@
 	("C-c l F" . eglot-format-buffer)
 	("C-c l R" . eglot-reconnect))
   :hook
-  ((python-mode
-    c-mode
-    java-mode
+  ((python-mode python-ts-mode
+    c-mode c-ts-mode
+    java-mode java-ts-mode
     nix-ts-mode
     yaml-ts-mode
     typescript-ts-mode
     web-mode
-    json-mode) . eglot-ensure)
+    json-mode) . eglot-ensure) 
 
   :custom
   (eglot-report-progress nil)
@@ -261,7 +272,7 @@
 
 (use-package ob-plantuml
   :after org
-  :custom (org-plantuml-exec-mode 'plantuml)) ;; Note the quote here!
+  :custom (org-plantuml-exec-mode 'plantuml))
 
 (use-package ox-latex
   :custom
@@ -337,7 +348,11 @@
   (org-appear-autosubmarkers t)
   (org-appear-inside-latex t))
 
-
+(use-package plantuml-mode
+  :mode ("\\.plantuml\\'" "\\.puml\\'")
+  :custom
+  (plantuml-default-exec-mode 'executable))
+    
 (use-package eat
   :hook
   (eshell-load . eat-eshell-mode)
